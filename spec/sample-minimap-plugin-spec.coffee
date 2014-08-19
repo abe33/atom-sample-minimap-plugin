@@ -7,11 +7,9 @@ SampleMinimapPlugin = require '../lib/sample-minimap-plugin'
 # or `fdescribe`). Remove the `f` to unfocus the block.
 
 describe "SampleMinimapPlugin", ->
-  activationPromise = null
 
   beforeEach ->
     atom.workspaceView = new WorkspaceView
-    activationPromise = atom.packages.activatePackage('sample-minimap-plugin')
 
   waitsForPromise -> atom.workspaceView.open('sample.js')
 
