@@ -11,23 +11,23 @@ describe "SampleMinimapPlugin", ->
   beforeEach ->
     atom.workspaceView = new WorkspaceView
 
-  waitsForPromise -> atom.workspaceView.open('sample.js')
+    waitsForPromise -> atom.workspaceView.open('sample.js')
 
-  runs ->
-    atom.workspaceView.simulateDomAttachment()
-    editorView = atom.workspaceView.getActiveView()
-    editorView.find('.lines').css('line-height', '14px')
-    editorView.height(50)
-    editorView.setText("This is the file content")
+    runs ->
+      atom.workspaceView.simulateDomAttachment()
+      editorView = atom.workspaceView.getActiveView()
+      editorView.find('.lines').css('line-height', '14px')
+      editorView.height(50)
+      editorView.setText("This is the file content")
 
-  waitsForPromise ->
-    atom.packages.activatePackage('minimap')
+    waitsForPromise ->
+      atom.packages.activatePackage('minimap')
 
-  runs ->
-    atom.workspaceView.trigger 'minimap:toggle'
+    runs ->
+      atom.workspaceView.trigger 'minimap:toggle'
 
-  waitsForPromise ->
-    atom.packages.activatePackage('sample-minimap-plugin')
+    waitsForPromise ->
+      atom.packages.activatePackage('sample-minimap-plugin')
 
   describe "with an open editor that have a minimap", ->
     it "creates and attaches the view to the minimap", ->
